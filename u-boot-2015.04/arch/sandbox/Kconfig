@@ -1,0 +1,37 @@
+menu "Sandbox architecture"
+	depends on SANDBOX
+
+config SYS_ARCH
+	default "sandbox"
+
+config SYS_BOARD
+	default "sandbox"
+
+config SYS_CONFIG_NAME
+	default "sandbox"
+
+config DM
+	default y
+
+config DM_GPIO
+	default y
+
+config DM_SERIAL
+	default y
+
+config DM_CROS_EC
+	default y
+
+config DM_SPI
+	default y
+
+config DM_SPI_FLASH
+	default y
+
+config DM_I2C
+	default y
+
+config DM_TEST
+	default y
+
+endmenu

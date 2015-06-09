@@ -1,0 +1,68 @@
+menu "Library routines"
+
+config CC_OPTIMIZE_LIBS_FOR_SPEED
+	bool "Optimize libraries for speed"
+	help
+	  Enabling this option will pass "-O2" to gcc when compiling
+	  under "lib" directory.
+
+	  If unsure, say N.
+
+config HAVE_PRIVATE_LIBGCC
+	bool
+
+config USE_PRIVATE_LIBGCC
+	bool "Use private libgcc"
+	depends on HAVE_PRIVATE_LIBGCC
+	help
+	  This option allows you to use the built-in libgcc implementation
+	  of U-boot instead of the one privided by the compiler.
+	  If unsure, say N.
+
+config SYS_HZ
+	int
+	default 1000
+	help
+	  The frequency of the timer returned by get_timer().
+	  get_timer() must operate in milliseconds and this option must be
+	  set to 1000.
+
+source lib/rsa/Kconfig
+
+menu "Hashing Support"
+
+config SHA1
+	bool "Enable SHA1 support"
+	help
+	  This option enables support of hashing using SHA1 algorithm.
+	  The hash is calculated in software.
+	  The SHA1 algorithm produces a 160-bit (20-byte) hash value
+	  (digest).
+
+config SHA256
+	bool "Enable SHA256 support"
+	help
+	  This option enables support of hashing using SHA256 algorithm.
+	  The hash is calculated in software.
+	  The SHA256 algorithm produces a 256-bit (32-byte) hash value
+	  (digest).
+
+config SHA_HW_ACCEL
+	bool "Enable hashing using hardware"
+	help
+	  This option enables hardware acceleration
+	  for SHA1/SHA256 hashing.
+	  This affects the 'hash' command and also the
+	  hash_lookup_algo() function.
+
+config SHA_PROG_HW_ACCEL
+	bool "Enable Progressive hashing support using hardware"
+	depends on SHA_HW_ACCEL
+	help
+	  This option enables hardware-acceleration for
+	  SHA1/SHA256 progressive hashing.
+	  Data can be streamed in a block at a time and the hashing
+	  is performed in hardware.
+endmenu
+
+endmenu

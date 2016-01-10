@@ -12,7 +12,7 @@ echo "	1. BananaPi-M1"
 echo "	2. BananaPi-M1-Plus"
 echo "	3. BananaPi-M2"
 echo "------------------------------------------"
-read -p "Please choose a target(1-3): " choice
+if [ -z $1 ]; then read -p "Please choose a target(1-3): " choice; else choice=$1; fi
 echo
 
 echo -e "\033[31m Now building u-boot...\033[0m"
